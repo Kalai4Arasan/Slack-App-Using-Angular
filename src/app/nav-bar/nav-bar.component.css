@@ -1,0 +1,15 @@
+.navbar{
+    background-color: #350d36;
+    color: white;
+}
+.input-size{
+    width: 450px;
+}
+.center{
+    margin-left: 30%;
+    padding: 10px;
+}
+.hover-btn:hover{
+    color: black;
+    background-color: white;
+}

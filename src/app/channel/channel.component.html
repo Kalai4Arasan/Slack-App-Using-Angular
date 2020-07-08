@@ -1,0 +1,51 @@
+<div class="row">
+    <div id="MainBox" class="col-md-12">
+        <div class="card border-white mt-1 margin-bottom">
+            <div class="card-title">
+                <h5 class="mt-2 p-2">
+                    <i *ngIf="PageUserData['channelType']=='Private';else NotBlock;" class="fa fa-xs fa-lock mr-1"></i>
+                    <ng-template #NotBlock>
+                    <i class="fa fa-xs fa-hashtag mr-1"></i>
+                    </ng-template>
+                    {{PageUserName['userName']}}
+                    <span class="btn float-right text-secondary details mb-2" data-toggle="collapse" data-target="#collapseDetails" aria-expanded="false" aria-controls="collapseDetails"><i class="fa fa-info-circle text-dark " ></i> Details</span></h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li  class="list-group-item " *ngFor="let item of totalMessages">
+                        <small class="font-weight-bold" *ngIf="item!='' && item['user']['name']!=data['name'];else:ElseBlock;">{{item['user']['name']}} <span class="badge badge-pill badge-primary small">{{item['time'] | date:"HH:mm a"}}</span></small>
+                        <ng-template #ElseBlock>
+                            <small class="font-weight-bold">You <span class="badge badge-pill badge-primary small">{{item['time'] | date:"HH:mm a"}}</span></small>
+                        </ng-template>
+                        <p [innerHTML]="item['message']"></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <form action="" class="form-inline flex-bottom" #messageForm="ngForm" (ngSubmit)="sendMessage()">
+                <ckeditor #input="ngModel" [editor]="Editor" [(ngModel)]="messageInput"  name="messageInput" required></ckeditor>
+                <button type="submit" [disabled]="input.untouched && input.invalid" class="btn btn-lg btn-primary ml-2 mtop  submit"><i class="fa fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-4 collapse" id="collapseDetails">
+        <div class="card">
+            <div class="card-body">
+                <img src="assets/Images/group.png" alt="">
+                <h4>{{PageUserData['channelName']}}</h4>
+                <small class="list-group-item"><span class="font-weight-bold">Type:</span> {{PageUserData['channelType']}}</small>
+                <small class="list-group-item"><span class="font-weight-bold">Total People:</span> {{PageUserData['users'][PageUserName['roomId']].length}}</small>
+
+                    <li class="user list-group-item " data-toggle="collapse" data-target="#channelsPanel" aria-expanded="false" aria-controls="channelsPanel">
+                        <i id="iconuser" class="fa fa-caret-right"></i> People
+                      </li>
+                    <li *ngFor="let item of PageUserData['users'][PageUserName['roomId']]" class="collapse list-group-item text-center" id="channelsPanel">
+                        {{item}}
+                    </li>
+            </div>
+        </div>
+    </div>
+
+</div>
+

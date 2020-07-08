@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "SlackApp"
+    }
+  },
+  "defaultProject": "SlackApp",
+  "cli": {
+    "analytics": "73a37f51-5e5c-436a-b823-e54a22f8cb23"
+  }
 }

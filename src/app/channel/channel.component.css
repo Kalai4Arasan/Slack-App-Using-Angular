@@ -1,0 +1,23 @@
+.flex-bottom{
+    position: fixed;;
+    bottom:0;
+}
+.width-full{
+    width:1000px;
+}
+.mtop{
+    margin-top:6%;
+}
+.card-title{
+    border: 1px solid rgb(180, 172, 172);
+    border-radius: 10px;
+}
+.small{
+    font-size: 10px;
+}
+li{
+    list-style-type: none;
+}
+.margin-bottom{
+    margin-bottom: 10%;
+}

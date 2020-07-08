@@ -1,0 +1,17 @@
+
+.text{
+    color:rgb(221, 216, 221);
+}
+ul{
+    list-style-type: none;
+}
+.fa-xs{
+    font-size: 12px;
+}
+.pb{
+    padding-bottom: 180%;
+}
+.bg{
+    background-color: #350d36;
+    color: white;
+}

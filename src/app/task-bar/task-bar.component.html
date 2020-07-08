@@ -1,0 +1,51 @@
+<button class="btn bg d-sm-none" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  <i class="fa fa-list"></i>
+</button>
+<div class="row">
+  <div class="col-md-2 d-sm-block bg collapse" id="collapseExample">
+      <div  class="bg-color text">
+        <div class="dropdown">
+            <button class="btn dropdown-toggle text-white mb-0" type="button" data-toggle="dropdown">Codingmart
+            <span class="caret"></span></button>
+            <ul class="ml-3 dropdown-menu text-center">
+              <small>Welcome {{userData['name']}}</small>
+              <hr>
+              <li><a routerLink="" class="text-decoration-none">Account</a></li>
+              <li><a routerLink="" class="text-decoration-none">Help</a></li>
+              <li><a routerLink="" class="text-decoration-none">Logout</a></li>
+            </ul>
+            <i class="fa fa-edit text-dark ml-3 mt-2 p-3 rounded-circle bg-white"></i>
+          </div>
+        <small class="ml-4">{{userData['name'] | uppercase}}</small>
+        <hr class="text">
+        <ul >
+            <li class="cl1" data-toggle="collapse" data-target="#channels" aria-expanded="false" aria-controls="channels">
+                <i id="icon1" class=" fa fa-caret-right"></i> Channels
+              </li>
+                <li *ngFor="let item of userData['channels']" class="collapse mr-4" id="channels">
+                    <a class="ml-3 mt-1 text text-decoration-none" routerLink="/channel/{{item[1]}}/{{item[0]}}">
+                      <i *ngIf="item[2]=='Private';else ElseBlock;" class="fa fa-xs fa-lock mr-1"></i>
+                      <ng-template #ElseBlock>
+                        <i class="fa fa-xs fa-hashtag mr-1"></i>
+                      </ng-template>
+                      <small>{{item[1]}}</small></a><br>
+                </li>
+        </ul>
+        <ul class="pb" >
+          <li class="cl2" data-toggle="collapse" data-target="#messages" aria-expanded="false" aria-controls="messages">
+              <i id="icon2" class="fa fa-caret-right"></i> Direct Messages
+            </li>
+              <li *ngFor="let item of userData['friends']" class="collapse mr-4" id="messages">
+                  <a class="ml-3 mt-1 text text-decoration-none" routerLink="/message/{{item[1]}}/{{item[0]}}">
+                    <i  class="fa fa-xs fa-circle text-white mr-1"></i>
+                    <small>{{item[1]}}</small></a><br>
+              </li>
+      </ul>
+    
+    </div>
+  </div>
+  <div class="col-md-10">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
